@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
-import { Plus, CheckSquare, AlertCircle, Search } from 'lucide-react'
+import { Plus, CheckSquare, AlertCircle, Search, Calendar } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { tasksApi, projectsApi } from '@/api/services'
 import { Button, Badge, Modal, Input, Select, Skeleton, EmptyState, Avatar } from '@/components/ui'
@@ -159,7 +159,7 @@ export default function TasksPage() {
                                     {isCompleted && <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M5 13l4 4L19 7" /></svg>}
                                 </button>
 
-                                <div className={`w-1 h-6 rounded-full ${priority.color.replace('text-', 'bg-')}`} style={{ opacity: isCompleted ? 0.3 : 1 }} />
+                                <div className={`w-1 h-6 rounded-full ${priority.bar}`} style={{ opacity: isCompleted ? 0.3 : 1 }} />
 
                                 <Link to={`/tasks/${task.id}`} className="flex-1 min-w-0">
                                     <p className={`text-sm font-semibold truncate transition-colors ${isCompleted ? 'line-through text-muted-foreground' : 'text-foreground group-hover:text-primary'}`}>
@@ -182,7 +182,7 @@ export default function TasksPage() {
 
                                 <div className="flex items-center gap-2">
                                     <Badge className={`${status.bg} ${status.color} text-[10px] font-bold uppercase`}>{status.label}</Badge>
-                                    {task.assigneeName && <Avatar name={task.assigneeName} size="xs" />}
+                                    {task.assigneeName && <Avatar name={task.assigneeName} size="sm" />}
                                 </div>
                             </div>
                         )

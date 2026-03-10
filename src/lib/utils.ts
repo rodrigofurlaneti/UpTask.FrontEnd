@@ -30,11 +30,11 @@ export function isOverdue(dueDate?: string | null, status?: TaskStatus) {
   return isAfter(new Date(), new Date(dueDate))
 }
 
-export const priorityConfig: Record<Priority, { label: string; color: string; bg: string }> = {
-  Low:      { label: 'Baixa',    color: 'text-slate-400',  bg: 'bg-slate-400/10' },
-  Medium:   { label: 'Média',    color: 'text-blue-400',   bg: 'bg-blue-400/10'  },
-  High:     { label: 'Alta',     color: 'text-orange-400', bg: 'bg-orange-400/10'},
-  Critical: { label: 'Crítica',  color: 'text-red-400',    bg: 'bg-red-400/10'   },
+export const priorityConfig: Record<Priority, { label: string; color: string; bg: string; bar: string }> = {
+  Low:      { label: 'Baixa',    color: 'text-slate-400',  bg: 'bg-slate-400/10',  bar: 'bg-slate-400'  },
+  Medium:   { label: 'Média',    color: 'text-blue-400',   bg: 'bg-blue-400/10',   bar: 'bg-blue-400'   },
+  High:     { label: 'Alta',     color: 'text-orange-400', bg: 'bg-orange-400/10', bar: 'bg-orange-400' },
+  Critical: { label: 'Crítica',  color: 'text-red-400',    bg: 'bg-red-400/10',    bar: 'bg-red-400'    },
 }
 
 export const statusConfig: Record<TaskStatus, { label: string; color: string; bg: string }> = {

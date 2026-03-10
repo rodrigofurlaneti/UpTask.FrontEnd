@@ -21,7 +21,7 @@ export const useAuthStore = create<AuthState>()(
         localStorage.setItem('uptask_token', auth.accessToken)
         set({
           token: auth.accessToken,
-          user: { id: auth.userId, email: auth.email, role: auth.role },
+          user: { id: auth.userId, email: auth.email, role: auth.role, name: auth.name },
           isAuthenticated: true,
         })
       },

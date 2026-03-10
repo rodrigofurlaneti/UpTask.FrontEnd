@@ -234,7 +234,7 @@ export default function ProjectDetailPage() {
               return (
                 <Link key={task.id} to={`/tasks/${task.id}`}>
                   <div className="flex items-center gap-4 p-3 bg-card border border-border rounded-xl hover:bg-accent/50 transition-all">
-                    <div className={`w-1 h-8 rounded-full ${priority.color.replace('text-', 'bg-')}`} />
+                    <div className={`w-1 h-8 rounded-full ${priority.bar}`} />
                     <p className="flex-1 text-sm font-medium text-foreground truncate">{task.title}</p>
                     <Badge className={`${status.bg} ${status.color} text-xs shrink-0`}>{status.label}</Badge>
                     {task.dueDate && <span className="text-xs text-muted-foreground shrink-0">{formatDate(task.dueDate)}</span>}

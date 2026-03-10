@@ -6,6 +6,7 @@ export interface AuthToken {
   userId: string
   email: string
   role: string
+  name: string
 }
 
 export interface LoginPayload { email: string; password: string }
@@ -81,6 +82,7 @@ export interface Task {
   storyPoints?: number
   isOverdue: boolean
   projectId?: string
+  projectName?: string
   parentTaskId?: string
   assigneeId?: string
   assigneeName?: string

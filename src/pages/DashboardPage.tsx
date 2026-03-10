@@ -159,7 +159,7 @@ export default function DashboardPage() {
                   return (
                     <Link key={task.id} to={`/tasks/${task.id}`}>
                       <div className="flex items-center gap-4 p-3 bg-card border border-border rounded-xl hover:border-border/80 hover:bg-accent/50 transition-all">
-                        <div className={`w-1.5 h-8 rounded-full ${priority.color.replace('text-', 'bg-').replace('/10', '')}`} />
+                        <div className={`w-1.5 h-8 rounded-full ${priority.bar}`} />
                         <div className="flex-1 min-w-0">
                           <p className={`text-sm font-medium truncate ${task.status === 'Completed' ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
                             {task.title}
