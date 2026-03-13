@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
@@ -51,16 +51,25 @@ export default function ProjectsPage() {
     })
 
     const selectedColor = watch('color')
+    const priorityMap: Record<string, number> = {
+        'Low': 0,
+        'Medium': 1,
+        'High': 2,
+        'Critical': 3
+    };
 
     const createMutation = useMutation({
         mutationFn: (data: FormData) => {
-            // 3. Limpeza de dados para o .NET (Strings vazias -> null)
             const payload = {
-                ...data,
+                name: data.name,
+                description: data.description || null,
+                priority: priorityMap[data.priority],
                 startDate: data.startDate || null,
                 plannedEndDate: data.plannedEndDate || null,
-                description: data.description || null,
+                color: data.color,
+                categoryId: "5594cd0a-76a3-46e4-973f-f7a38ab55144"
             }
+            console.log('Enviando Payload:', payload); 
             return projectsApi.create(payload as any)
         },
         onSuccess: () => {
@@ -69,8 +78,10 @@ export default function ProjectsPage() {
             setModalOpen(false)
             reset()
         },
-        onError: () => {
-            toast.error('Erro ao criar projeto. Verifique os dados.')
+        onError: (error: any) => {
+            console.error('Erro detalhado do Back-end:', error.response?.data);
+            const message = error.response?.data?.message || 'Verifique os dados do formulário.';
+            toast.error(`Erro: ${message}`);
         }
     })
 

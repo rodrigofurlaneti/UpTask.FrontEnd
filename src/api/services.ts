@@ -1,4 +1,4 @@
-import { api } from './client'
+﻿import { api } from './client'
 import type {
   AuthToken, LoginPayload, RegisterPayload,
   Project, CreateProjectPayload, ProjectMember,
@@ -10,7 +10,9 @@ import type {
 // ── Auth ──────────────────────────────────────────────────────────────────────
 export const authApi = {
   login: (data: LoginPayload) =>
-    api.post<{ success: boolean; data: AuthToken }>('/auth/login', data).then(r => r.data.data!),
+    api.post<AuthToken>('/auth/login', data).then(r => {
+        return r.data; 
+    }),
   register: (data: RegisterPayload) =>
     api.post<{ success: boolean; data: AuthToken }>('/auth/register', data).then(r => r.data.data!),
   changePassword: (data: { currentPassword: string; newPassword: string; confirmNewPassword: string }) =>
